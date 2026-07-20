@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inner Peace - Spiritual & Meditation Site</title>
+    <style>
+        body {
+            background-color: #f4f0e8;
+            color: #333333;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #5b7f6b;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #3f5c4d;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #ffffff;
+            margin: 0 12px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        div.section {
+            padding: 20px 40px;
+            margin: 15px;
+            background-color: #ffffff;
+            border-radius: 8px;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        h2 {
+            color: #3f5c4d;
+            border-bottom: 2px solid #5b7f6b;
+            padding-bottom: 5px;
+        }
+
+        h3 {
+            color: #5b7f6b;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        table, th, td {
+            border: 1px solid #cccccc;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #5b7f6b;
+            color: #ffffff;
+        }
+
+        img {
+            max-width: 300px;
+            display: block;
+            margin: 15px 0;
+        }
+
+        footer {
+            background-color: #3f5c4d;
+            color: #ffffff;
+            text-align: center;
+            padding: 15px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Inner Peace - Spiritual & Meditation Site</h1>
+        <p>Find your calm. Nurture your soul.</p>
+    </header>
+
+    <!-- Navigation Section -->
+    <nav>
+        <a href="#about">About Meditation</a>
+        <a href="#benefits">Benefits</a>
+        <a href="#practices">Practices</a>
+        <a href="#plants">Plant Table</a>
+        <a href="#contact">Contact</a>
+        <a href="#top">Back to Top</a>
+    </nav>
+
+    <!-- About Meditation Section -->
+    <div class="section" id="about">
+        <h2>About Meditation</h2>
+        <p>
+            Meditation is an ancient practice that helps the mind settle into a state of calm awareness.
+            By focusing attention and letting go of distracting thoughts, we create space for clarity,
+            peace, and self-understanding.
+        </p>
+        <p>
+            Spirituality, closely tied to meditation, is about connecting with something greater than
+            ourselves. It may be found in nature, in silence, in prayer, or simply in quiet reflection
+            during a busy day.
+        </p>
+        <h3>A Short History</h3>
+        <p>
+            Meditation practices date back thousands of years, originating in ancient India and spreading
+            across Asia before becoming popular worldwide. Today, people from all walks of life use
+            meditation to reduce stress and improve wellbeing.
+        </p>
+    </div>
+
+    <!-- Benefits Section -->
+    <div class="section" id="benefits">
+        <h2>Benefits of Meditation</h2>
+        <p>Regular meditation offers many benefits for both the mind and body.</p>
+        <h3>Mental Benefits</h3>
+        <p>Meditation can reduce anxiety, improve focus, and promote emotional balance.</p>
+        <h3>Physical Benefits</h3>
+        <p>It can also lower blood pressure, improve sleep quality, and boost the immune system.</p>
+
+        <!-- Description List of Benefits -->
+        <dl>
+            <dt>Mindfulness</dt>
+            <dd>Being fully present in the current moment without judgment.</dd>
+
+            <dt>Breath Awareness</dt>
+            <dd>Focusing on the natural rhythm of breathing to calm the mind.</dd>
+
+            <dt>Gratitude</dt>
+            <dd>Recognizing and appreciating the positive aspects of life.</dd>
+        </dl>
+    </div>
+
+    <!-- Practices Section -->
+    <div class="section" id="practices">
+        <h2>Meditation Practices</h2>
+        <p>There are many ways to practice meditation. Here are some common types, organized by category.</p>
+
+        <h3>Guided Practices (Ordered List)</h3>
+        <ol>
+            <li>Breathing Meditation
+                <ol>
+                    <li>Sit comfortably</li>
+                    <li>Close your eyes</li>
+                    <li>Focus on each inhale and exhale</li>
+                </ol>
+            </li>
+            <li>Body Scan Meditation
+                <ol>
+                    <li>Lie down comfortably</li>
+                    <li>Slowly bring attention to each body part</li>
+                    <li>Release tension as you go</li>
+                </ol>
+            </li>
+            <li>Walking Meditation
+                <ol>
+                    <li>Walk slowly and deliberately</li>
+                    <li>Focus on each footstep</li>
+                    <li>Notice your surroundings mindfully</li>
+                </ol>
+            </li>
+        </ol>
+
+        <h3>Tools for Practice (Unordered List)</h3>
+        <ul>
+            <li>Meditation Cushion</li>
+            <li>Calming Elements
+                <ul>
+                    <li>Incense</li>
+                    <li>Candles</li>
+                    <li>Soft Music</li>
+                </ul>
+            </li>
+            <li>Nature Elements
+                <ul>
+                    <li>Indoor Plants</li>
+                    <li>Water Features</li>
+                    <li>Natural Light</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Plant Nursery / Table Section -->
+    <div class="section" id="plants">
+        <h2>Plants for a Peaceful Space</h2>
+        <p>
+            Many people enjoy keeping calming plants nearby during meditation. Below is an image and
+            details about a few plants that promote a peaceful atmosphere.
+        </p>
+
+        <!-- Clickable Image Link -->
+        <a href="https://en.wikipedia.org/wiki/Meditation" target="_blank">
+            <img src="plant-nursery.jpg" alt="Plant Nursery">
+        </a>
+        <p><em>Click the image above to learn more about meditation (opens in a new tab).</em></p>
+
+        <h3>Plant Details Table</h3>
+        <table>
+            <tr>
+                <th>Plant Name</th>
+                <th>Benefits</th>
+                <th>Care Level</th>
+            </tr>
+            <tr>
+                <td>Lavender</td>
+                <td>Promotes relaxation and better sleep</td>
+                <td>Easy</td>
+            </tr>
+            <tr>
+                <td>Aloe Vera</td>
+                <td>Purifies air and has healing properties</td>
+                <td>Easy</td>
+            </tr>
+            <tr>
+                <td>Jasmine</td>
+                <td>Calms the mind with its gentle fragrance</td>
+                <td>Moderate</td>
+            </tr>
+            <tr>
+                <td>Bamboo Palm</td>
+                <td>Improves air quality and adds serenity</td>
+                <td>Moderate</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="section" id="contact">
+        <h2>Contact Us</h2>
+        <p>Have questions about meditation or spiritual growth? Reach out to us anytime.</p>
+        <p>Email: <a href="mailto:info@innerpeace.com">info@innerpeace.com</a></p>
+        <p>Phone: <a href="tel:+1234567890">+1 (234) 567-890</a></p>
+        <p>
+            You can also read more from this
+            <a href="#about" title="Jump back to the About section">bookmark link to the About section</a>.
+        </p>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2026 Inner Peace Meditation Site. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
