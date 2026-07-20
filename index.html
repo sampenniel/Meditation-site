@@ -5,44 +5,178 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inner Peace - Spiritual & Meditation Site</title>
     <style>
+        /* ===== Root Variables ===== */
+        :root {
+            --sage-dark: #2d4739;
+            --sage-mid: #4a7360;
+            --sage-light: #7fa88f;
+            --cream: #f7f3ea;
+            --gold: #c9a962;
+            --gold-light: #e6cf9a;
+            --text-dark: #2b2b28;
+            --card-shadow: 0 10px 30px rgba(45, 71, 57, 0.08);
+            --card-shadow-hover: 0 20px 45px rgba(45, 71, 57, 0.18);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            background-color: #f4f0e8;
-            color: #333333;
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
+            background: linear-gradient(180deg, #f7f3ea 0%, #eef2ec 40%, #f7f3ea 100%);
+            color: var(--text-dark);
+            font-family: 'Segoe UI', 'Trebuchet MS', Arial, sans-serif;
+            line-height: 1.75;
             margin: 0;
             padding: 0;
         }
 
-        header {
-            background-color: #5b7f6b;
-            color: #ffffff;
-            padding: 20px;
-            text-align: center;
+        /* ===== Scroll Progress Bar ===== */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            width: 0%;
+            background: linear-gradient(90deg, var(--gold), var(--sage-light));
+            z-index: 1000;
+            transition: width 0.1s ease-out;
         }
 
-        nav {
-            background-color: #3f5c4d;
-            padding: 10px;
+        /* ===== Header ===== */
+        header {
+            background: linear-gradient(135deg, #1f3329 0%, var(--sage-dark) 45%, var(--sage-mid) 100%);
+            color: #ffffff;
+            padding: 90px 20px 70px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -10%;
+            width: 60%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(201, 169, 98, 0.18) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: -60%;
+            right: -10%;
+            width: 60%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(127, 168, 143, 0.25) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.6rem;
+            letter-spacing: 1px;
+            font-weight: 600;
+            position: relative;
+            animation: fadeInDown 1s ease both;
+        }
+
+        header p {
+            margin: 14px 0 0;
+            font-size: 1.15rem;
+            color: var(--gold-light);
+            letter-spacing: 0.5px;
+            font-style: italic;
+            position: relative;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-25px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== Fixed Navigation ===== */
+        nav {
+            background: rgba(31, 51, 41, 0.95);
+            backdrop-filter: blur(8px);
+            padding: 14px 10px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 900;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
         }
 
         nav a {
-            color: #ffffff;
-            margin: 0 12px;
+            color: #eef2ec;
+            margin: 0 14px;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 600;
+            font-size: 0.92rem;
+            letter-spacing: 0.3px;
+            padding: 8px 4px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0%;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
         }
 
         nav a:hover {
-            text-decoration: underline;
+            color: var(--gold-light);
         }
 
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
+        }
+
+        nav a.active {
+            color: var(--gold);
+        }
+
+        /* ===== Section Cards ===== */
         div.section {
-            padding: 20px 40px;
-            margin: 15px;
-            background-color: #ffffff;
-            border-radius: 8px;
+            padding: 40px 45px;
+            margin: 40px auto;
+            max-width: 960px;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(74, 115, 96, 0.08);
+            opacity: 0;
+            transform: translateY(35px);
+            transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.35s ease;
+        }
+
+        div.section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        div.section:hover {
+            box-shadow: var(--card-shadow-hover);
         }
 
         h1 {
@@ -50,60 +184,229 @@
         }
 
         h2 {
-            color: #3f5c4d;
-            border-bottom: 2px solid #5b7f6b;
-            padding-bottom: 5px;
+            color: var(--sage-dark);
+            border-bottom: 3px solid var(--gold);
+            display: inline-block;
+            padding-bottom: 8px;
+            margin-bottom: 18px;
+            font-size: 1.75rem;
+            letter-spacing: 0.3px;
         }
 
         h3 {
-            color: #5b7f6b;
+            color: var(--sage-mid);
+            margin-top: 26px;
+            font-size: 1.25rem;
         }
 
+        p {
+            margin: 12px 0;
+            color: #4a4a45;
+        }
+
+        /* ===== Description List ===== */
+        dl {
+            background: linear-gradient(135deg, #f7f3ea, #eef2ec);
+            border-radius: 12px;
+            padding: 20px 25px;
+            margin-top: 18px;
+        }
+
+        dt {
+            font-weight: 700;
+            color: var(--sage-dark);
+            margin-top: 12px;
+        }
+
+        dd {
+            margin: 4px 0 0 0;
+            color: #55554f;
+        }
+
+        /* ===== Lists ===== */
+        ol, ul {
+            padding-left: 24px;
+        }
+
+        li {
+            margin: 6px 0;
+        }
+
+        /* ===== Table ===== */
         table {
             border-collapse: collapse;
             width: 100%;
-            margin-top: 15px;
+            margin-top: 18px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
         }
 
         table, th, td {
-            border: 1px solid #cccccc;
+            border: 1px solid #e2e2da;
         }
 
         th, td {
-            padding: 10px;
+            padding: 13px 15px;
             text-align: left;
         }
 
         th {
-            background-color: #5b7f6b;
+            background: linear-gradient(135deg, var(--sage-mid), var(--sage-dark));
             color: #ffffff;
+            font-weight: 600;
+            letter-spacing: 0.3px;
         }
 
+        tr {
+            transition: background-color 0.25s ease;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f7f3ea;
+        }
+
+        tr:hover {
+            background-color: #eef4ec;
+        }
+
+        /* ===== Image ===== */
         img {
             max-width: 300px;
             display: block;
-            margin: 15px 0;
+            margin: 18px 0;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(45, 71, 57, 0.2);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
 
+        img:hover {
+            transform: scale(1.03) rotate(-0.5deg);
+            box-shadow: 0 16px 35px rgba(45, 71, 57, 0.3);
+        }
+
+        /* ===== Links (general, inside content) ===== */
+        div.section a {
+            color: var(--sage-mid);
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: color 0.3s ease, border-color 0.3s ease;
+        }
+
+        div.section a:hover {
+            color: var(--gold);
+            border-bottom-color: var(--gold);
+        }
+
+        /* ===== Buttons (styled anchors used as contact CTAs) ===== */
+        .btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 22px;
+            background: linear-gradient(135deg, var(--sage-mid), var(--sage-dark));
+            color: #ffffff !important;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            box-shadow: 0 6px 16px rgba(45, 71, 57, 0.25);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 22px rgba(45, 71, 57, 0.35);
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--sage-dark) !important;
+            border-bottom-color: transparent !important;
+        }
+
+        /* ===== Footer ===== */
         footer {
-            background-color: #3f5c4d;
-            color: #ffffff;
+            background: linear-gradient(135deg, var(--sage-dark), #1f3329);
+            color: #eef2ec;
             text-align: center;
-            padding: 15px;
-            margin-top: 20px;
+            padding: 26px 15px;
+            margin-top: 50px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ===== Back to Top Button ===== */
+        #backToTop {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--sage-mid));
+            color: #ffffff;
+            border: none;
+            font-size: 1.3rem;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(15px);
+            transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
+            z-index: 900;
+        }
+
+        #backToTop.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        #backToTop:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 700px) {
+            header {
+                padding: 70px 15px 50px;
+            }
+
+            header h1 {
+                font-size: 1.9rem;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 6px 8px;
+                font-size: 0.85rem;
+            }
+
+            div.section {
+                padding: 26px 22px;
+                margin: 24px 14px;
+            }
+
+            h2 {
+                font-size: 1.45rem;
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress"></div>
+
     <!-- Header Section -->
-    <header>
+    <header id="top">
         <h1>Inner Peace - Spiritual & Meditation Site</h1>
         <p>Find your calm. Nurture your soul.</p>
     </header>
 
     <!-- Navigation Section -->
-    <nav>
+    <nav id="main-nav">
         <a href="#about">About Meditation</a>
         <a href="#benefits">Benefits</a>
         <a href="#practices">Practices</a>
@@ -253,8 +556,8 @@
     <div class="section" id="contact">
         <h2>Contact Us</h2>
         <p>Have questions about meditation or spiritual growth? Reach out to us anytime.</p>
-        <p>Email: <a href="mailto:info@innerpeace.com">info@innerpeace.com</a></p>
-        <p>Phone: <a href="tel:+1234567890">+1 (234) 567-890</a></p>
+        <p>Email: <a href="mailto:info@innerpeace.com" class="btn">info@innerpeace.com</a></p>
+        <p>Phone: <a href="tel:+1234567890" class="btn">+1 (234) 567-890</a></p>
         <p>
             You can also read more from this
             <a href="#about" title="Jump back to the About section">bookmark link to the About section</a>.
@@ -265,6 +568,83 @@
     <footer>
         <p>&copy; 2026 Inner Peace Meditation Site. All rights reserved.</p>
     </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" title="Back to Top" aria-label="Back to Top">&#8593;</button>
+
+    <script>
+        // ===== Scroll Progress Bar =====
+        const progressBar = document.getElementById('scroll-progress');
+
+        function updateProgressBar() {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            progressBar.style.width = scrollPercent + '%';
+        }
+
+        // ===== Back to Top Button Visibility =====
+        const backToTopBtn = document.getElementById('backToTop');
+
+        function toggleBackToTop() {
+            if (window.scrollY > 400) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        }
+
+        backToTopBtn.addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ===== Active Nav Link Highlighting =====
+        const navLinks = document.querySelectorAll('#main-nav a');
+        const sections = document.querySelectorAll('div.section');
+
+        function updateActiveLink() {
+            let currentId = '';
+            const scrollPos = window.scrollY + 140;
+
+            sections.forEach(function (section) {
+                if (scrollPos >= section.offsetTop) {
+                    currentId = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(function (link) {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentId) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // ===== Scroll-Triggered Fade-In Animations =====
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        sections.forEach(function (section) {
+            observer.observe(section);
+        });
+
+        // ===== Combined Scroll Listener =====
+        window.addEventListener('scroll', function () {
+            updateProgressBar();
+            toggleBackToTop();
+            updateActiveLink();
+        });
+
+        // Run once on load
+        updateProgressBar();
+        toggleBackToTop();
+        updateActiveLink();
+    </script>
 
 </body>
 </html>
